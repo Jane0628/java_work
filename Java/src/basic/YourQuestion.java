@@ -8,11 +8,12 @@ public class YourQuestion {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("지금 기분이 어때요? \n: ");
+		System.out.print("How are you feeling right now? \n: ");
 		String feeling = sc.nextLine();
-		String happy = "행복해요.";
+		String happy = "I'm happy!";
 		
-		System.out.println("\n진짜인지 확인해보도록 하겠습니다.");
+		System.out.println("\nHmm... Ok... We'll see.....");
+				
 		System.out.println(feeling == happy);
 		
 		sc.close();
