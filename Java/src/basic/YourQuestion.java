@@ -12,10 +12,15 @@ public class YourQuestion {
 		String feeling = sc.nextLine();
 		String happy = "I'm happy!";
 		
-		System.out.println("\nHmm... Ok... We'll see.....");
-				
-		System.out.println(feeling == happy);
+		System.out.println("\nLet me check if you're lying to me.");
 		
+		if(feeling.equals(happy)) {
+			System.out.println("Ok, you are telling me the truth. :)");
+		}
+		else {
+			System.out.println("You don't have to lie to me. Please tell me the truth. :(");
+		}
+				
 		sc.close();
 		
 	}
