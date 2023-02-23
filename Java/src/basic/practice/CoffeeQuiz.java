@@ -8,13 +8,13 @@ public class CoffeeQuiz {
 		// range = a ~ b
 		// Math.random()*(b + 1 - a) + a
 
-		int temp = (int) (Math.random()*2 + 1); //범위 : 1 ~ 2 / 1.0 <= x < 4.0
+		int temp = (int) (Math.random()*2 + 1); //범위 : 1 ~ 2 / 1.0 <= x < 3.0
 		int menu = (int) (Math.random()*73 + 1); //범위 : 1 ~ 73
 
 		if (temp == 1) {
 			System.out.print("(hot)");
 		} else {
-			System.out.print("(ice)");
+			System.out.print("(cold)");
 		}
 
 		switch(menu) {
