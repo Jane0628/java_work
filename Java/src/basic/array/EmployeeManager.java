@@ -16,9 +16,6 @@ public class EmployeeManager {
 		//		실제로 입력된 데이터(사원의 정보)의 개수를 체크하는 변수.
 		int count = 0;
 
-		//		등록된 사용자의 수를 체크하는 변수.
-		int a = 0;
-
 		while(true) {
 			System.out.println("\n========== 사원 관리 프로그램 ==========");
 			System.out.println("# 1. 사원 정보 신규 등록");
@@ -48,26 +45,25 @@ public class EmployeeManager {
 						if(num.equals(userNums[i])) {
 							System.out.println("중복되는 사번입니다.\n올바른 사번으로 다시 입력해주세요.\n");
 							flag = true;
-						} else if (i == userNums.length-1) {
-							userNums[a] = num;				
 						}
 					} // end for
 
 					if(!flag) {
+						userNums[count] = num;
+						
 						System.out.print("성함을 입력해주세요.\n> ");
 						String name = sc.next();
-						names[a] = name;
+						names[count] = name;
 
 						System.out.print("나이를 입력해주세요.\n> ");
 						int age = sc.nextInt();
-						ages[a] = age;
+						ages[count] = age;
 
 						System.out.print("부서를 입력해주세요.\n> ");
 						String part = sc.next();
-						departments[a] = part;
+						departments[count] = part;
 
 						System.out.printf("\n%s님의 사원 등록이 완료되었습니다.\n사번 : %s\n나이 : %d\n부서 : %s\n", name, num, age, part);
-						a++;
 						count++;
 						break;
 					}
@@ -80,7 +76,7 @@ public class EmployeeManager {
 
 				System.out.println("\n*** 모든 사원 정보 보기 ***");
 
-				if (a == 0) {
+				if (count == 0) {
 					System.out.println("등록된 사원 정보가 없습니다.");
 				}
 
@@ -197,7 +193,7 @@ public class EmployeeManager {
 					String answer = sc.next();							
 					switch (answer) {
 
-					case "Y": case "y": {
+					case "Y": case "y":
 						boolean flag = false;
 						for(int i=0; i<userNums.length; i++) {
 							if(num.equals(userNums[i])) {
@@ -216,19 +212,15 @@ public class EmployeeManager {
 						}
 						System.out.println("\n삭제가 완료되었습니다.");
 						count--;
-						a--;
 						break out;
-					} //end case "Y"
 
-					case "N": case "n": {
+					case "N": case "n":
 						System.out.println("\n삭제를 취소합니다.");
 						break out;
-					}
 
-					default : {
+					default :
 						System.out.println("\n유효하지 않은 답변입니다.");
 						break;
-					}
 
 					} //end switch(answer)
 				} // end while(true) 5
