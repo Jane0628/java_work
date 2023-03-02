@@ -35,7 +35,8 @@ public class MethodExample1 {
 
 	public static void main(String[] args) {
 
-		
+		int total = calcTotal(10);
+		System.out.println(total);
 
 	}
 
