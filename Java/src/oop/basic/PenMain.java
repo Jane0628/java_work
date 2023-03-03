@@ -5,7 +5,7 @@ public class PenMain {
 	public static void main(String[] args) {
 		
 		/*
-		 설계도에 작성한 속성과 기능을 사용하려면 반드시 실체(객체)를 생성하셔야 합ㄴ디ㅏ.
+		 설계도에 작성한 속성과 기능을 사용하려면 반드시 실체(객체)를 생성하셔야 합니다.
 		 클래스만 제작된 채로는 아무 기능도 수행할 수 없습니다.
 		 */
 		
@@ -23,13 +23,13 @@ public class PenMain {
 		blackPen.price = 700;
 		
 		redPen.write();
-		bluePen.write();
-		blackPen.write();
-		
 		redPen.priceInfo();
-		bluePen.priceInfo();
-		blackPen.priceInfo();
 		
+		bluePen.write();
+		bluePen.priceInfo();
+		
+		blackPen.write();
+		blackPen.priceInfo();
 		
 		
 	}
