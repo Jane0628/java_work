@@ -132,6 +132,7 @@ public class MethodQuiz02 {
 		//양념치킨의 존재 여부
 		include("양념치킨");
 		
+		
 		System.out.println();
 		
 		//2번 인덱스 데이터를 닭갈비로 수정.

@@ -40,6 +40,7 @@ public class StringMethod {
 
         //length(): 문자열의 총 길이 반환
         int len = str.length();
+        
         System.out.println("len: " + len);
 
         //indexOf(str): 해당 문자가 있는 인덱스를 반환
