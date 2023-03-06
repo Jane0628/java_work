@@ -12,6 +12,26 @@ public class MainClass {
 		w1.rage = 60;
 		w1.characterInfo();
 		
+		System.out.println();
+		
+		Hunter h1 = new Hunter();
+		h1.level = 1;
+		h1.atk = 2;
+		h1.hp = 50;
+		h1.name = "헌터1";
+		h1.pet = "똥강아지";
+		h1.characterInfo();
+		
+		System.out.println();
+		
+		Mage m1 = new Mage();
+		m1.level = 1;
+		m1.atk = 1;
+		m1.hp = 45;
+		m1.name = "법사1";
+		m1.mana = 50;
+		m1.characterInfo();
+		
 	}
 
 }
