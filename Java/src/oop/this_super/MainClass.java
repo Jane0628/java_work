@@ -41,6 +41,11 @@ public class MainClass {
 		Mage m1 = new Mage("마법사");
 		m1.characterInfo();
 		
+		System.out.println("------------------------");
+		
+		w1.attack(m1);
+		m1.attack(h1);
+		
 	}
 
 }
