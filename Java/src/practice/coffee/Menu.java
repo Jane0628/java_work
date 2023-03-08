@@ -298,9 +298,9 @@ public class Menu {
 		return null;
 	}
 
-	
+
 	String[] recipe(int temp, int menu) {
-		
+
 		switch(menu) {
 
 		case 0:
@@ -321,102 +321,189 @@ public class Menu {
 				return a;
 			}
 
-		case 2:
-			if(temp == 0) { // (hot) 헤이즐넛아메리카노
+		case 2: case 3:
+			if(temp == 0) { // (hot) 시럽 + 아메리카노
 				String[] a = {"시럽(3p)", "추출", "온수 투입", "샷 투입"};
 				return a;
-			} else { // (ice) 헤이즐넛아메리카노
+			} else { // (ice) 시럽 + 아메리카노
 				String[] a = {"시럽(4p)", "추출", "얼음 투입", "정수 투입", "샷 투입"};
 				return a;
 			}
-
-		case 3:
-			if(temp == 0) return "(hot) 바닐라아메리카노";
-			else return "(ice) 바닐라아메리카노";
-
+			
 		case 4:
 			if(temp == 0) break;
-			else return "(ice) 메가리카노";
+			else { // (ice) 메가리카노
+				String[] a = {"추출", "얼음 투입", "정수 투입", "샷 투입"};
+				return a;
+			}
 
 		case 5:
-			if(temp == 0) return "(hot) 카페라떼";
-			else return "(ice) 카페라떼";
+			if(temp == 0) { // (hot) 카페라떼
+				String[] a = {"스팀 우유", "추출", "샷 투입", "스팀 우유 투입"};
+				return a;
+			} else { // (ice) 카페라떼
+				String[] a = {"추출", "얼음 투입", "우유 투입", "샷 투입"};
+				return a;
+			}
 
 		case 6:
-			if(temp == 0) return "(hot) 카푸치노";
-			else return "(ice) 카푸치노";
+			if(temp == 0) { // (hot) 카푸치노
+				String[] a = {"스팀 우유", "추출", "샷 투입", "스팀 우유 투입", "(선택) 시나몬 파우더"};
+				return a;
+			} else { // (ice) 카푸치노
+				String[] a = {"추출", "얼음 투입", "우유 투입", "샷 투입", "우유폼", "우유폼 투입", "(선택) 시나몬 파우더"};
+				return a;
+			}
 
 		case 7:
-			if(temp == 0) return "(hot) 캬라멜마끼아또";
-			else return "(ice) 캬라멜마끼아또";
+			if(temp == 0) { // (hot) 캬라멜마끼아또
+				String[] a = {"스팀 우유", "시럽(3p)", "추출", "샷 투입", "스팀 우유 투입", "캬라멜 드리즐"};
+				return a;
+			} else { // (ice) 캬라멜마끼아또
+				String[] a = {"시럽(4p)", "추출", "얼음 투입", "우유 투입", "우유폼", "샷 투입", "우유폼 투입", "캬라멜 드리즐"};
+				return a;
+			}
 
-		case 8:
-			if(temp == 0) return "(hot) 바닐라라떼";
-			else return "(ice) 바닐라라떼";
-
-		case 9:
-			if(temp == 0) return "(hot) 헤이즐넛라떼";
-			else return "(ice) 헤이즐넛라떼";
+		case 8: case 9:
+			if(temp == 0) { // (hot) 시럽 + 라떼
+				String[] a = {"스팀 우유", "시럽(3p)", "추출", "샷 투입", "스팀 우유 투입"};
+				return a;
+			} else { // (ice) 시럽 + 라떼
+				String[] a = {"시럽(4p)", "추출", "얼음 투입", "우유(A선) 투입", "샷 투입"};
+				return a;
+			}
 
 		case 10:
-			if(temp == 0) return "(hot) 연유라떼";
-			else return "(ice) 큐브라떼";
+			if(temp == 0) { // (hot) 연유라떼
+				String[] a = {"스팀 우유", "연유(샷잔 1/4선) + 슈가 시럽(1p)", "추출", "샷 섞은 후 투입", "스팀 우유 투입"};
+				return a;
+			} else { // (ice) 큐브라떼
+				String[] a = {"연유(샷잔 1/4선)", "추출", "얼음(컵선) 투입", "우유(A선) 투입", "샷 섞은 후 투입", "에스프레소 큐브(2개) 투입"};
+				return a;
+			}
 
 		case 11:
-			if(temp == 0) return "(hot) 카페모카";
-			else return "(ice) 카페모카";
+			if(temp == 0) { // (hot) 카페모카
+				String[] a = {"스팀 우유", "추출", "초코 파우더(2래들) 투입", "샷 투입 후 섞기", "스팀 우유 투입", "휘핑 크림", "초코 드리즐"};
+				return a;
+			} else { // (ice) 카페모카
+				String[] a = {"추출", "초코 베이스(컵 밑선) 투입", "얼음(컵선) 투입", "우유(A선) 투입", "샷 투입 후 섞기", "휘핑 크림", "초코 드리즐"};
+				return a;
+			}
 
 		case 12:
-			if(temp == 0) return "(hot) 민트카페모카";
-			else return "(ice) 민트카페모카";
+			if(temp == 0) { // (hot) 민트카페모카
+				String[] a = {"스팀 우유", "추출", "초코 파우더(2래들) + 민트 시럽(3p) 투입", "샷 투입 후 섞기", "스팀 우유 투입", "민트 휘핑 크림", "딸기 크런치"};
+				return a;
+			} else { // (ice) 민트카페모카
+				String[] a = {"추출", "초코 베이스(컵 밑선) + 민트 시럽(3p) 투입", "얼음(컵선) 투입", "우유(A선) 투입", "샷 투입 후 섞기", "민트 휘핑 크림", "딸기 크런치"};
+				return a;
+			}
 
 		case 13:
-			if(temp == 0) return "(hot) 티라미수라떼";
-			else return "(ice) 티라미수라떼";
+			if(temp == 0) { // (hot) 티라미수라떼
+				String[] a = {"스팀 우유", "소스(샷잔 1/4선) + 슈가 시럽(1p)", "추출", "샷 섞은 후 투입", "스팀 우유 투입", "티라미수 크림", "코코아 파우더"};
+				return a;
+			} else { // (ice) 티라미수라떼
+				String[] a = {"소스(샷잔 1/4선) + 슈가 시럽(1p)", "추출", "얼음(컵선) 투입", "우유(B선) 투입", "샷 섞은 후 투입", "티라미수 크림", "코코아 파우더"};
+				return a;
+			}
 
 		case 14:
-			if(temp == 0) return "(hot) 콜드브루 오리지널";
-			else return "(ice) 콜드브루 오리지널";
+			if(temp == 0) { // (hot) 콜드브루 오리지널
+				String[] a = {"원액(100ml) 투입", "온수 투입"};
+				return a;
+			} else { // (ice) 콜드브루 오리지널
+				String[] a = {"원액(컵 밑선) 투입", "얼음 투입", "정수 투입", "섞기"};
+				return a;
+			}
 
 		case 15:
-			if(temp == 0) return "(hot) 콜드브루 라떼";
-			else return "(ice) 콜드브루 라떼";
+			if(temp == 0) { // (hot) 콜드브루 라떼
+				String[] a = {"스팀 우유", "원액(100ml) 투입", "스팀 우유 투입"};
+				return a;
+			} else { // (ice) 콜드브루 라떼
+				String[] a = {"원액(컵 밑선) 투입", "얼음 투입", "우유 투입", "섞기"};
+				return a;
+			}
 
 		case 16:
-			if(temp == 0) return "(hot) 녹차라떼";
-			else return "(ice) 녹차라떼";
+			if(temp == 0) { // (hot) 녹차라떼
+				String[] a = {"스팀 우유", "녹차 파우더(2래들) 투입", "온수(약간) 투입 후 섞기", "스팀 우유 투입", "녹차 파우더"};
+				return a;
+			} else { // (ice) 녹차라떼
+				String[] a = {"녹차 베이스(컵 밑선) 투입", "얼음 투입", "우유 투입", "섞기"};
+				return a;
+			}
 
 		case 17:
-			if(temp == 0) return "(hot) 로얄밀크티";
-			else return "(ice) 로얄밀크티";
+			if(temp == 0) { // (hot) 로얄밀크티
+				String[] a = {"스팀 우유", "홍차 파우더(2래들) 투입", "온수(약간) 투입 후 섞기", "스팀 우유 투입"};
+				return a;
+			} else { // (ice) 로얄밀크티
+				String[] a = {"우유(200ml) + 홍차 파우더(2래들) 믹서기 투입 후 3번", "얼음 투입", "음료 투입"};
+				return a;
+			}
 
 		case 18:
-			if(temp == 0) return "(hot) 핫초코";
-			else return "(ice) 아이스초코";
+			if(temp == 0) { // (hot) 핫초코
+				String[] a = {"스팀 우유", "초코 파우더(4래들) 투입", "온수(약간) 투입 후 섞기", "스팀 우유 투입", "코코아 파우더"};
+				return a;
+			} else { // (ice) 아이스초코
+				String[] a = {"초코 베이스(D선) 투입", "얼음 투입", "우유 투입", "섞기(벽 긁기)"};
+				return a;
+			}
 
 		case 19:
-			if(temp == 0) return "(hot) 메가초코";
-			else return "(ice) 메가초코";
+			if(temp == 0) { // (hot) 메가초코
+				String[] a = {"스팀 우유", "초코 파우더(4래들) 투입", "온수(약간) 투입 후 섞기", "스팀 우유 투입", "휘핑 크림", "초코 + 캬라멜 드리즐", "딸기 크런치"};
+				return a;
+			} else { // (ice) 메가초코
+				String[] a = {"초코 베이스(D선) 투입", "얼음(컵선) 투입", "우유 투입", "섞기(벽 긁기)", "휘핑 크림", "초코 + 캬라멜 드리즐", "딸기 크런치"};
+				return a;
+			}
 
 		case 20:
-			if(temp == 0) return "(hot) 민트크림초코";
-			else return "(ice) 민트크림초코";
+			if(temp == 0) { // (hot) 민트크림초코
+				String[] a = {"스팀 우유", "초코 파우더(1.5래들) + 민트 시럽(3p) 투입", "온수(약간) 투입 후 섞기", "스팀 우유 투입", "민트 휘핑 크림", "딸기 크런치"};
+				return a;
+			} else { // (ice) 민트크림초코
+				String[] a = {"초코 베이스(컵 밑선) + 민트 시럽(3p) 투입", "얼음(컵선) 투입", "우유 투입", "민트 휘핑 크림", "딸기 크런치"};
+				return a;
+			}
 
 		case 21:
-			if(temp == 0) return "(hot) 토피넛라떼";
-			else return "(ice) 토피넛라떼";
+			if(temp == 0) { // (hot) 토피넛라떼
+				String[] a = {"스팀 우유", "토피넛 파우더(4래들) 투입", "온수(약간) 투입 후 섞기", "스팀 우유 투입", "캬라멜 드리즐"};
+				return a;
+			} else { // (ice) 토피넛라떼
+				String[] a = {"우유(250ml) + 토피넛 파우더(4래들) 믹서기 투입 후 3번", "얼음 투입", "스팀 우유 투입", "캬라멜 드리즐"};
+				return a;
+			}
 
 		case 22:
-			if(temp == 0) return "(hot) 고구마라떼";
-			else return "(ice) 고구마라떼";
+			if(temp == 0) { // (hot) 고구마라떼
+				String[] a = {"스팀 우유(80도)", "고구마 페이스트(1스쿱) + 슈가 시럽(1p) 투입", "스팀 우유(우유만) 투입", "섞기", "스팀 우유(폼) 투입", "아몬드 슬라이스"};
+				return a;
+			} else { // (ice) 고구마라떼
+				String[] a = {"우유(200ml) + 고구마 페이스트(1스쿱) + 슈가 시럽(1p) 믹서기 투입 후 3번", "얼음 투입", "음료 투입"};
+				return a;
+			}
 
 		case 23:
-			if(temp == 0) return "(hot) 곡물라떼";
-			else return "(ice) 곡물라떼";
+			if(temp == 0) { // (hot) 곡물라떼
+				String[] a = {"스팀 우유", "오곡 파우더(4래들) + 슈가 시럽(1p) 투입", "스팀 우유(우유만) 투입", "스팀 우유(폼) 투입", "아몬드 슬라이스"};
+				return a;
+			} else { // (ice) 곡물라떼
+				String[] a = {"우유(250ml) + 오곡 파우더(4래들) + 슈가 시럽(1p) 믹서기 투입 후 3번", "얼음 투입", "음료 투입"};
+				return a;
+			}
 
 		case 24:
 			if(temp == 0) break;
-			else return "(ice) 딸기라떼";
+			else { // (ice) 딸기라떼
+				
+			}
 
 		case 25:
 			if(temp == 0) break;
@@ -607,8 +694,8 @@ public class Menu {
 			else return "(ice) 흑당밀크티라떼";
 
 		}
-		
-		
+
+
 	}
 
 
