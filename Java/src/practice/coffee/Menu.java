@@ -502,32 +502,34 @@ public class Menu {
 		case 24:
 			if(temp == 0) break;
 			else { // (ice) 딸기라떼
-				
+				String[] a = {"가당 딸기(200ml) + 슈가 시럽(3p) 투입", "얼음 투입", "우유 투입"};
+				return a;
 			}
 
 		case 25:
 			if(temp == 0) break;
-			else return "(ice) 오레오초코라떼";
+			else { // (ice) 오레오초코라떼
+				String[] a = {"우유(200ml) + 초코 베이스(50ml) + 오레오(3개) 믹서기 투입 후 5초간 3번", "얼음 투입", "음료 흔들어서 투입", "휘핑 크림", "오레오(1개)", "쿠키 분태"};
+				return a;
+			}
 
-		case 26:
-			if(temp == 0) return "(hot) 얼그레이";
-			else return "(ice) 얼그레이";
-
-		case 27:
-			if(temp == 0) return "(hot) 캐모마일";
-			else return "(ice) 캐모마일";
-
-		case 28:
-			if(temp == 0) return "(hot) 페퍼민트";
-			else return "(ice) 페퍼민트";
-
-		case 29:
-			if(temp == 0) return "(hot) 녹차";
-			else return "(ice) 녹차";
+		case 26: case 27: case 28: case 29:
+			if(temp == 0) { // (hot) 티
+				String[] a = {"티백(1개)", "온수 투입"};
+				return a;
+			} else { // (ice) 티
+				String[] a = {"티백(2개) 온수(150ml)에 3분간 우리기", "얼음(반컵) 투입", "우린 물 투입", "얼음 투입", "정수 투입", "티백 투입", "민트 잎"};
+				return a;
+			}
 
 		case 30:
-			if(temp == 0) return "(hot) 유자차";
-			else return "(ice) 유자차";
+			if(temp == 0) { // (hot) 유자차
+				String[] a = {"유자청(5래들) 투입", "온수 투입", "섞기"};
+				return a;
+			} else { // (ice) 유자차
+				String[] a = {"티백(1개)", "온수 투입"};
+				return a;
+			}
 
 		case 31:
 			if(temp == 0) return "(hot) 레몬차";
