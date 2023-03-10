@@ -20,6 +20,8 @@ public class Score {
 	private int total;
 	private double avg;
 	
+	public Score() {}
+	
 	public Score(String name, int kor, int eng, int math) {
 		super();
 		this.name = name;
