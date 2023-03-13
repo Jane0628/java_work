@@ -1,6 +1,9 @@
 package etc.api.util.random;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -58,7 +61,7 @@ public class LottoSimulator {
 	}
 
 	//당첨 등수를 알려주는 메서드
-	public static void checkLottoNumber(???, ???, ???) {
+	public static void checkLottoNumber(Set<Integer> firstPlace, Set<Integer> myLotto, int bonusNum) {
 
 		/*
 		 매개값으로 당첨 번호 집합, 구매한 로또 번호 집합, 보너스 번호를 받습니다.
@@ -71,6 +74,50 @@ public class LottoSimulator {
 		 3개 일치 -> 5등
 		 나머지 -> 꽝
 		 */
+		
+		List<Integer> win = new ArrayList<>(firstPlace);
+		List<Integer> mine = new ArrayList<>(myLotto);
+		
+		Collections.sort(win);
+		Collections.sort(mine);
+		
+		int count = 0;
+		for(int i=0; i<win.size(); i++) {
+			if(win.get(i) == mine.get(i)) {
+				count++;
+			}
+		}
+		
+		switch (count) {
+		
+		case 6: {
+			prize1++;
+			break;
+		}
+		
+		case 5: {
+			if(mine.contains(bonusNum)) {
+				prize2++;
+			} else {
+				prize3++;
+			}
+			break;
+		}
+		
+		case 4: {
+			prize4++;
+			break;
+		}
+		
+		case 3: {
+			prize5++;
+			break;
+		}
+		
+		default:
+			failCnt++;
+			break;
+		}
 
 	}
 
@@ -83,6 +130,8 @@ public class LottoSimulator {
 		//보너스 번호도 하나 고정시키세요.
 		int bonusNum = createBonusNum(firstPlace);
 
+		
+		int count = 0;
 		long money = 0L;
 		while(true) {
 
@@ -93,12 +142,29 @@ public class LottoSimulator {
 			 */
 
 			Set<Integer> myLotto = createLotto();
-			money += 1000;
+			money += 1000L;
+			count++;
 			
+			checkLottoNumber(firstPlace, myLotto, bonusNum);
 			
-			
-			
+			if(prize1 == 1) {
+				break;
+			} else {
+				System.out.printf("로또를 %d번째 구매하셨습니다.\n", count);				
+			}
+
 		}
+		
+		System.out.println("----------------------------");
+		System.out.println("*** 1등 당첨! ***");
+		System.out.println("1등 당첨 번호 : " + firstPlace + " + [" + bonusNum + "]");
+		System.out.println("2등이 된 횟수 : " + prize2);
+		System.out.println("3등이 된 횟수 : " + prize3);
+		System.out.println("4등이 된 횟수 : " + prize4);
+		System.out.println("5등이 된 횟수 : " + prize5);
+		System.out.println("꽝이 된 횟수 : " + failCnt);
+		System.out.println("당첨되기까지 산 로또 개수 : " + count);
+		System.out.println("총 사용 금액 : " + money);
 
 
 	}
