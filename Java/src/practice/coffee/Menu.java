@@ -527,13 +527,18 @@ public class Menu {
 				String[] a = {"유자청(5래들) 투입", "온수 투입", "섞기"};
 				return a;
 			} else { // (ice) 유자차
-				String[] a = {"티백(1개)", "온수 투입"};
+				String[] a = {"유자청(6래들) 투입", "온수(약간) 투입", "섞기", "얼음 투입", "정수 투입", ""};
 				return a;
 			}
 
 		case 31:
-			if(temp == 0) return "(hot) 레몬차";
-			else return "(ice) 레몬차";
+			if(temp == 0) { // (hot) 레몬차
+				String[] a = {"레몬청(5래들) 투입", "온수 투입", "섞기", "레몬 슬라이스(1개)"};
+				return a;
+			} else { // (ice) 레몬차
+				String[] a = {"레몬청(5래들) 투입", "온수 투입", "섞기"};
+				return a;
+			}
 
 		case 32:
 			if(temp == 0) return "(hot) 자몽차";
