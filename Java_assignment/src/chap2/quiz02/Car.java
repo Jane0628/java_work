@@ -38,15 +38,15 @@ public class Car {
 		System.out.println("시동이 걸렸습니다.");
 	}
 
-	void injectGasoline() {
+	private void injectGasoline() {
 		System.out.println("연료가 엔진에 주입됩니다.");
 	}
 
-	void injectOil() {
+	private void injectOil() {
 		System.out.println("엔진오일이 순환합니다.");
 	}
 
-	void moveCylinder() {
+	private void moveCylinder() {
 		if(start) System.out.println("실린더가 움직입니다.");
 		else System.out.println("실린더가 움직이지 않습니다.");
 	}
