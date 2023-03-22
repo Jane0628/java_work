@@ -1,4 +1,4 @@
-package chap3;
+package chap3.answer;
 
 public class Radio extends Product {
 	

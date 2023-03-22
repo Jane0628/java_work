@@ -1,4 +1,4 @@
-package chap3;
+package chap3.myAnswer;
 
 public class MainClass {
 
