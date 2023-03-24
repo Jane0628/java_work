@@ -1,4 +1,4 @@
-package chap4;
+package chap4.answer;
 
 import java.util.Scanner;
 
@@ -25,10 +25,8 @@ public class Student {
 	//학생 정보를 받아서 객체화 시킬 메서드
 	public void inputStuInfo() {
 		System.out.println("# 성적 정보 입력을 시작합니다.");
-		
 		System.out.print("- 학번 : ");
 		this.stuId = sc.next();
-		
 		System.out.print("- 이름 : ");
 		this.name = sc.next();
 
@@ -38,27 +36,20 @@ public class Student {
 		예외처리를 해서, 다시 점수를 입력받을 수 있는
 		무한 루프를 구성해 주세요.
 		*/
-		
 		while(true) {
 			try {
-				System.out.print("- 국어 점수 : ");
+				System.out.print("- 국어 : ");
 				this.kor = sc.nextInt();
-				
-				System.out.print("- 영어 점수 : ");
+				System.out.print("- 영어 : ");
 				this.eng = sc.nextInt();
-				
-				System.out.print("- 수학 점수 : ");
+				System.out.print("- 수학 : ");
 				this.math = sc.nextInt();
-				
-				break;				
+				break;
 			} catch (Exception e) {
-				System.out.println("유효하지 않은 입력값입니다.");
+				System.out.println("점수는 숫자로만 입력하세요!");
 				sc.nextLine();
 			}
-			
 		}
-		
-		
 	}
 
 	//총점, 평균, 학점을 계산하는 메서드

@@ -1,4 +1,4 @@
-package chap4;
+package chap4.answer;
 
 import java.util.List;
 import java.util.Scanner;
@@ -33,7 +33,7 @@ public class Point {
 	}
 
 	//1. 학생의 성적 정보를 입력할 메서드
-	public void inputPoints(List<Student> a) {
+	public void inputPoints(List<Student> students) {
 		/*
 		 1. 학생 객체를 1개 생성합니다.
 		 2. 학생 객체에 속성값을 설정하는 메서드들을 호출해야 합니다.
@@ -41,15 +41,17 @@ public class Point {
 		 4. 저장 완료 메세지를 호출하세요.
 		 ex) XXX님의 성적 정보가 정상적으로 입력되었습니다.
 		 */
-		
 		Student stu = new Student();
-		a.add(stu);
-		System.out.println(stu.getName() + "님의 성적 정보가 정상적으로 입력되었습니다.");		
+//		stu.inputStuInfo();
+//		stu.calcTotAvgGrade();
+		students.add(stu);
+		System.out.printf("%s님의 성적 정보가 정상적으로 입력되었습니다.\n"
+				, stu.getName());
 		
 	}
 
 	//2. 전체 학생들의 성적 정보를 출력할 메서드
-	public void showAllPoints(List<Student> a) { //학생 객체들이 들어있는 리스트가 와야죠?
+	public void showAllPoints(List<Student> students) { //학생 객체들이 들어있는 리스트가 와야죠?
 
 		/*
 		 1. 리스트 안에 들어있는 학생 객체들의 정보를
@@ -61,15 +63,18 @@ public class Point {
 
 		 3. 우리 반 평균을 가장 아랫부분에 출력해야 합니다.
 		 */
+		double totalAvg = 0.0;
 		
-		int total = 0;
-		for(int i=0; i<a.size(); i++) {
-			showPointUI();
-			a.get(i).outputStuInfo();
-			total += a.get(i).getTotal();
+		showPointUI();
+		for(Student stu : students) {
+			stu.outputStuInfo();
+			totalAvg += stu.getAverage();
 		}
 		
-		System.out.println("우리 반 평균 : " + (double) total/a.size());
+		System.out.println("-----------------------------------------------");
+		System.out.printf("\t\t\t\t\t우리반 전체 평균: %.2f점\n"
+				, totalAvg / students.size());
+		
 
 	}
 
@@ -86,19 +91,14 @@ public class Point {
 		 2. 찾는 학번이 존재하지 않는다면 검색하지 못했다는
 		  메세지를 출력해 주세요.
 		 */
-		
-		boolean flag = false;
-		for(Student a : students) {
-			if(a.getStuId().equals(stuNum)) {
-				showPointUI();
-				a.outputStuInfo();
-				flag = true;
-				break;
-			}
-		}
-		
-		if(!flag) {
-			System.out.println("존재하지 않는 학번입니다.");
+		Student stu = findInstance("조회", students);
+		if(stu != null) {
+			System.out.printf("%s님의 성적 정보를 출력합니다.\n"
+					, stu.getName());
+			showPointUI();
+			stu.outputStuInfo();
+		} else {
+			System.out.println("입력한 학번과 일치하는 학생 정보가 없습니다.");
 		}
 		
 	}
@@ -115,34 +115,30 @@ public class Point {
 		  
 		 - 찾는 학번이 없을 시 검색하지 못했다는 메세지를 출력해 주세요.
 		 */
-		
-		System.out.println("정보 수정을 진행할 학생의 학번을 입력하세요.");
-		System.out.print("> ");
-		String stuId = sc.next();
-		
-		boolean flag = false;
-		for(Student a : students) {
-			if(a.getStuId().equals(stuId)) {
-				System.out.print("- 국어 점수 : ");
-				a.setKor(sc.nextInt());
-				
-				System.out.print("- 영어 점수 : ");
-				a.setEng(sc.nextInt());
-				
-				System.out.print("- 수학 점수 : ");
-				a.setMath(sc.nextInt());
-				
-				a.calcTotAvgGrade();
-				
-				flag = true;
-				break;
+		Student stu = findInstance("수정", students);
+		if(stu != null) {
+			System.out.printf("%s님의 성적 정보를 수정합니다.\n"
+					, stu.getName());
+			while(true) {
+				try {
+					System.out.print("국어: ");
+					stu.setKor(sc.nextInt());
+					System.out.print("영어: ");
+					stu.setEng(sc.nextInt());
+					System.out.print("수학: ");
+					stu.setMath(sc.nextInt());
+					break; //while true break
+				} catch (Exception e) {
+					System.out.println("정수로만 입력하세요!");
+					sc.nextLine();
+				}
 			}
-		}
-		
-		if(!flag) {
-			System.out.println("학번을 검색하지 못했습니다.");
-		}
-		
+			stu.calcTotAvgGrade();
+			System.out.println("성적 수정이 정상 처리되었습니다.");
+			
+		} else {
+			System.out.println("해당 학번과 일치하는 학생 정보가 없습니다.");
+		}		
 	}
 	
 	//5. 학생 정보를 삭제하는 메서드
@@ -156,56 +152,53 @@ public class Point {
 		  
 		 - 학생이 없다면 없다고도 출력해 주세요.
 		 */
-		
-		System.out.println("정보 삭제를 진행할 학생의 학번을 입력하세요.");
+		System.out.println("정보를 삭제할 학생의 학번을 입력하세요.");
 		System.out.print("> ");
-		String stuId = sc.next();
+		String stuNum = sc.next();
 		
 		boolean flag = false;
-		for(int i=0; i<students.size(); i++) {
-			if((students.get(i)).getStuId().equals(stuId)) {
-				flag = true;
-				System.out.println("정말로 '" + (students.get(i)).getName() + "'님의 정보를 삭제하시겠습니까? [Y / N]");
+		for(Student stu : students) {
+			if(stuNum.equals(stu.getStuId())) {
+				System.out.printf("%s학생의 성적 정보를 삭제합니다. [Y / N]\n"
+						, stu.getName());
 				System.out.print("> ");
 				String answer = sc.next();
 				
-				switch (answer) {
-				case "Y": case "y": case "ㅛ": case "ㅇ": {
-					students.remove(i);
-					System.out.println("삭제가 완료되었습니다.");
-					return;
-				}
-				
-				case "N": case "n": case "ㅜ": case "ㄴ": {
+				if(answer.toUpperCase().equals("Y")) {
+					students.remove(stu);
+					System.out.println("삭제가 정상 처리되었습니다.");
+				} else {
 					System.out.println("삭제를 취소합니다.");
 					return;
 				}
-				default:
-					System.out.println("삭제 여부 확인이 불가합니다.");
-					System.out.println("삭제가 취소됩니다.");
-					return;
-				}
+				flag = true;
+				break;
 			}
 		}
-		
 		if(!flag) {
-			System.out.println("없는 학생입니다.");
+			System.out.println("해당 학번과 일치하는 학생 정보가 없습니다.");
 		}
 		
+		
 	}
-	
-	
-	
-	
-	
 
-	
 	public void close() {
 		sc.close();
 	}
 	
-
-
+	private Student findInstance(String req, List<Student> list) {
+		System.out.printf("%s하실 학생의 학번을 입력하세요.\n", req);
+		System.out.print("> ");
+		String stuNum = sc.next();
+		
+		for(Student stu : list) {
+			if(stuNum.equals(stu.getStuId())) {
+				return stu;
+			}
+		}
+		return null;
+	}
+	
 }
 
 
