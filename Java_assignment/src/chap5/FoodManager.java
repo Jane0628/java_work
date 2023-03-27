@@ -73,7 +73,6 @@ public class FoodManager {
 				
 				if(foods.isEmpty()) {
 					System.out.println("메뉴부터 먼저 등록해 주세요!");
-					continue;
 				}
 				
 				Set<String> keys = foods.keySet();
@@ -92,7 +91,7 @@ public class FoodManager {
 				sc.nextLine();
 				
 				System.out.println("--------------------------------");
-				breakSwitch : switch (answer) {
+				switch (answer) {
 				case 1: {
 					System.out.println("가격을 수정할 메뉴의 이름을 입력해주세요.");
 					System.out.print("> ");
@@ -100,7 +99,7 @@ public class FoodManager {
 					
 					if(foods.get(a) == null) {
 						System.out.println("없는 메뉴입니다.");
-						break breakSwitch;
+						break;
 					}
 					
 					System.out.println("가격을 얼마로 수정하시겠습니까?");
@@ -119,7 +118,7 @@ public class FoodManager {
 					
 					if(foods.get(a) == null) {
 						System.out.println("없는 메뉴입니다.");
-						break breakSwitch;
+						break;
 					}
 										
 					foods.remove(a);
